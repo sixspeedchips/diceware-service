@@ -1,14 +1,11 @@
 package edu.cnm.deepdive.dicewareservice;
 
-import java.io.InputStream;
 import java.security.SecureRandom;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.Properties;
 import java.util.Random;
 import java.util.ResourceBundle;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
@@ -19,24 +16,15 @@ public class DicewareServiceApplication {
   public static void main(String[] args) {
     SpringApplication.run(DicewareServiceApplication.class, args);
   }
+
   @Bean
-  public Random random(){
+  public Random random() {
     return new SecureRandom();
   }
 
   @Bean
-  public List<String> words(ResourceBundle bundle){
-    List<String> words = new LinkedList<>();
-    for (String key : bundle.keySet()) {
-      words.add(bundle.getString(key));
-    }
-    return words;
-  }
-
-  @Bean
-  public ResourceBundle bundle(){
+  public ResourceBundle bundle() {
     return ResourceBundle.getBundle("wordlist");
   }
-
 
 }
