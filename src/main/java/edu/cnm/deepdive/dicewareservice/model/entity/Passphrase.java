@@ -14,6 +14,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.OrderBy;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.validation.constraints.Pattern;
 import org.hibernate.annotations.CreationTimestamp;
 import org.springframework.lang.NonNull;
 
@@ -22,6 +23,7 @@ public class Passphrase {
 
   @NonNull
   @Column(name = "passkey", nullable = false, length = 20, unique = true)
+  @Pattern(regexp = "^\\D.*")
   private String key;
 
   @Id
@@ -29,7 +31,7 @@ public class Passphrase {
   @Column(name = "passphrase_id", updatable = false, nullable = false)
   private Long id;
 
-  @OneToMany(mappedBy = "passphrase", cascade = CascadeType.PERSIST)
+  @OneToMany(mappedBy = "passphrase", cascade = CascadeType.ALL)
   @OrderBy("word_id ASC")
   private List<Word> words = new ArrayList<>();
 
