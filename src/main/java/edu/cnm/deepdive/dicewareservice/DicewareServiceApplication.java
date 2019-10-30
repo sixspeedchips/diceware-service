@@ -48,4 +48,5 @@ public class DicewareServiceApplication extends ResourceServerConfigurerAdapter 
     http.authorizeRequests().anyRequest().hasRole("USER");
   }
 
+
 }
